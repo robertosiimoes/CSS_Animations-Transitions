@@ -1,0 +1,402 @@
+@import 'colors';
+
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// Body
+body {
+  background: $background;
+  padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Muli', sans-serif;
+  font-weight: 300;
+}
+
+
+// Titres
+.o-title {
+    color: $white;
+    text-align: center;
+    display: block;
+    position: relative;
+    padding-bottom: 5px;
+    margin-bottom: 35px;
+    width: 100%;
+    align-self: flex-start;
+    order: 0;
+
+    &::after {
+        content: '';
+        background-color: $green;
+        height: 2px;
+        width: 50px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+
+// Grille
+.o-card__grid {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 10px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+
+// Form
+.o-form {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &__group {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        & input {
+        border: 2px solid $white;
+        border-radius: 50px;
+        color: $blue;
+        font-family: inherit;
+        outline: none;
+        margin-left: 15px;
+        padding: 5px;
+
+            /***
+                Je note un problème dans le comportement des pseudos
+                classes :required et :invalid qui s'écrase l'une et
+                l'autre dans leur comportement. Ex :
+                Un élément non séléctionné et non rempli a un conflit de style
+                :blank n'étant pas encore utilisable
+             ***/
+
+            &:focus {
+                border: 2px solid $green;
+                transition: border 500ms;
+            }
+
+            &:not(:focus):invalid {
+                background-color: $warning;
+                border: 2px solid $warning;
+                color: $white;
+                animation: Headshake 100ms cubic-bezier(.4,.1,.6,.9) 2;
+                // animation-iteration-count: 2;
+                // Permet de répeter plusieurs notre animation
+            }
+        }
+    }
+
+    .o-group__label {
+        color: $white;
+        font-size: 14px;
+        line-height: 28px;
+    }
+}
+
+
+// Shapes
+.o-card__shape {
+    background-color: $grey--dark;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 200px;
+    padding: 25px;
+    position: relative;
+    width: 30%;
+    margin: 10px;
+
+    &:hover {
+        > .o-square {
+            transition: left 1s, transform 1s;
+    	    transform: translateX(-100%);
+            left: 100%;
+        }
+
+        > [class*="o-square"] {
+
+            &[class*="--scale"] {transform: scale(3, 0.5);}
+            &[class*="--scaleH"] {transform: scaleX(2);}
+            &[class*="--scaleV"] {transform: scaleY(2);}
+            &[class*="--translating"] {transform: translate(50px, 5px);}
+            &[class*="--translatingX"] {transform: translateX(50px);}
+            &[class*="--translatingY"] {transform: translateY(10px);}
+            &[class*="--withText"] {
+                transform: scale(1) rotate(0deg);
+
+                .o-text {
+                    transform: translateY(0);
+                }
+            }
+
+            &[class*="--TS"] {transform: translateX(200%) scale(2);}
+            &[class*="--ST"] {transform: scale(2) translateX(200%);}
+            &[class*="--skew"] {transform: skew(30deg, 30deg);}
+            &[class*="--skewX"] {transform: skewX(30deg);}
+            &[class*="--skewY"] {transform: skewY(30deg);}
+            &[class*="--PRX"] {transform: perspective(75px) rotateX(75deg);}
+            &[class*="--PRY"] {transform: perspective(75px) rotateY(75deg);}
+            &[class*="--PRZ"] {transform: perspective(75px) rotateZ(75deg);}
+            &[class*="--PR3D"] {transform: perspective(75px) rotate3d(-1, 0.5, -0.75, -75deg);}
+            &[class*="--PRTZ"] {transform: perspective(75px) translateZ(30px);}
+            &[class*="--PRT3D"] {transform: perspective(75px) translate3d(75%, -10%, 25px);}
+            &[class*="--PRSZTZ"] {transform: perspective(75px) scaleZ(20) translateZ(0.1rem);}
+            &[class*="--PRS3DTZ"] {transform: perspective(75px) scale3d(2, 0.5, 20) translateZ(0.1rem);}
+        }
+
+        > .o-shape__box {
+
+            [class*="o-square"] {
+                &[class*="--rotate_D"] {
+                    transform: rotate(-360deg);
+                    transition: transform 500ms ease-in-out;
+                }
+
+                &[class*="--rotate_T"] {
+                    transform: rotate(-1turn);
+                    transition: transform 500ms ease-in-out;
+                }
+            }
+        }
+    }
+
+    .o-shape__box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        [class*="o-square"] {
+            &[class*="--rotate_D"] {
+                background: $white;
+                transform: rotate(0deg);
+            }
+            &[class*="--rotate_T"] {
+                background: $green;
+                transform: rotate(0turn);
+            }
+        }
+    }
+
+    .o-square {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transition: left 1s, transform 1s;
+    }
+
+    [class*="o-square"] {
+        background-color: $white;
+        display: inline-block;
+        height: 35px;
+        width: 35px;
+
+        &[class*="--scale"],
+        &[class*="--scaleH"],
+        &[class*="--scaleV"],
+        &[class*="--translating"],
+        &[class*="--translatingX"],
+        &[class*="--translatingY"],
+        &[class*="--PRX"],
+        &[class*="--PRY"],
+        &[class*="--PRZ"],
+        &[class*="--PR3D"],
+        &[class*="--PRTZ"],
+        &[class*="--PRT3D"],
+        &[class*="--PRSZTZ"],
+        &[class*="--PRS3DTZ"],
+        &[class*="--rotate"],
+        &[class*="--TS"],
+        &[class*="--ST"],
+        &[class*="--skew"],
+        &[class*="--skewX"],
+        &[class*="--skewY"] {
+            margin: 0 auto;
+            transition: transform 300ms linear;
+        }
+
+        &[class*="--withText"] {
+            position: initial;
+            margin:  auto;
+            overflow: hidden;
+            transform: scale(0.1) rotate(-90deg);
+            transition: transform 300ms ease-in-out;
+
+            .o-text {
+                display: inline-block;
+                transform: translateY(250%);
+                transition: transform 350ms ease-out 50ms;
+            }
+        }
+    }
+
+    .o-btn {
+        background-color: $blue;
+        box-shadow: 0px 4px 10px $black;
+        color: $white;
+        border-radius: 50px;
+        height: 35px;
+        width: 135px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 0;
+
+        &--under {
+            order: 2;
+        }
+
+        &__text {
+            z-index: 1;
+        }
+
+        &::after {
+            content: '';
+            background-color: lighten($blue, 10%);
+            opacity: 0;
+            border-radius: inherit;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transition: opacity 350ms;
+            z-index: 0;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        &:active {
+            & + .o-progress > .o-progress__bar {
+                // transform: scaleX(1);
+                animation: Progress_Bar 1000ms forwards;
+                // animation-name: Progress_Bar;
+                // animation-duration: 1000ms;
+            }
+        }
+    }
+}
+
+
+// Barres de progression
+.o-progress {
+    background-color: $white;
+    height: 35px;
+    width: 100%;
+    padding: 5px;
+
+    &__bar {
+        height: 25px;
+        background-color: $green;
+        transform-origin: left;
+        opacity: 0;
+        // transform: scaleX(0);
+        // transition: transform 1000ms cubic-bezier(.32, 0, .07, 1);
+    }
+
+    &__loading {
+        height: 25px;
+        background-color: $green;
+        transform-origin: left;
+        opacity: 0;
+        /*
+            Nom animation,
+            durée,
+            délais de départ,
+            expansion des valeurs de départ et de fin
+        */
+        animation: Progress_Bar 1000ms 0.5s both;
+        // Permet d'animer les valeurs de départ et de fin de l'animation
+        //animation-fill-mode: both;
+        /*
+            Nous pouvons étendre ses valeurs du début à la fin de
+            l'animation en utilisant la propriété  animation-fill-mode :
+
+            - Le mot clé « backwards » prolonge les valeurs de départ
+            d'une animation avant son lancement,
+            couvrant la durée du délai assigné avant
+            que l'animation elle-même ne commence,
+
+            - Le mot clé « forwards » prolonge les valeurs finales
+            d'une animation jusqu'à ce que la page soit rechargée
+            ou que le navigateur soit fermé,
+
+            - Le mot clé « both » prolonge l'animation dans les deux sens ;
+        */
+    }
+}
+
+
+// Coding Box
+.o-coding__container {
+    background: $grey--dark;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    height: auto;
+    width: 800px;
+    margin: auto;
+    padding: 25px;
+
+    .o-anim__container {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        height: 500px;
+        width: 100%;
+        position: relative;
+
+        .o-coding__image {
+            background-image: url("../images/css-coding.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            height: 300px;
+            width: 100%;
+            position: absolute;
+            animation: Coding_Image 500ms 1.5s both;
+        }
+    }
+}
+
+
+// Spinner
+.spin {
+    background-color: #15DEA5;
+    width: 30vh;
+    height: 30vh;
+    animation: Spin 3s linear infinite paused;
+
+    &:hover {
+        animation-play-state: running;
+    }
+}

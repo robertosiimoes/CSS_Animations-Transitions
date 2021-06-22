@@ -1,0 +1,71 @@
+.o-loader {
+  background: #1c232d;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  height: auto;
+  width: 800px;
+  margin: 25px auto;
+  padding: 25px; }
+  .o-loader__text {
+    color: #ffffff;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 30px 0; }
+  .o-loader__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; }
+
+.load {
+  width: 30vh;
+  height: 22.5vh;
+  display: flex;
+  justify-content: space-evenly; }
+  .load__bar {
+    background-color: #15DEA5;
+    height: 100%;
+    width: 3vh;
+    animation: Bars 1000ms backwards infinite ease-in-out alternate; }
+    .load__bar--1 {
+      animation-delay: 200ms; }
+    .load__bar--1-inv {
+      animation-delay: 1400ms;
+      animation-direction: alternate-reverse;
+      background-color: #0E397F; }
+      .load__bar--1-inv:hover {
+        animation-play-state: paused; }
+    .load__bar--2 {
+      animation-delay: 400ms; }
+    .load__bar--2-inv {
+      animation-delay: 1645ms;
+      animation-direction: alternate-reverse;
+      background-color: #0E397F; }
+      .load__bar--2-inv:hover {
+        animation-play-state: paused; }
+    .load__bar--3 {
+      animation-delay: 600ms; }
+    .load__bar--3-inv {
+      animation-delay: 840ms;
+      animation-direction: alternate-reverse;
+      background-color: #0E397F; }
+      .load__bar--3-inv:hover {
+        animation-play-state: paused; }
+    .load__bar--4 {
+      animation-delay: 800ms; }
+    .load__bar--4-inv {
+      animation-delay: 1355ms;
+      animation-direction: alternate-reverse;
+      background-color: #0E397F; }
+      .load__bar--4-inv:hover {
+        animation-play-state: paused; }
+    .load__bar--5 {
+      animation-delay: 1000ms; }
+    .load__bar--5-inv {
+      animation-delay: 1795ms;
+      animation-direction: alternate-reverse;
+      background-color: #0E397F; }
+      .load__bar--5-inv:hover {
+        animation-play-state: paused; }

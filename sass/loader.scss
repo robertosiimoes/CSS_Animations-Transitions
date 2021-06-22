@@ -1,0 +1,62 @@
+@import 'colors';
+
+$size: 3vh;
+$num-bars: 5;
+$anim-dur: 1000ms;
+$anim-delay: $anim-dur / $num-bars;
+
+
+// Loader
+.o-loader {
+    background: $grey--dark;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    height: auto;
+    width: 800px;
+    margin: 25px auto;
+    padding: 25px;
+
+    &__text {
+        color: $white;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+.load {
+    width: $size*10;
+    height: $size*7.5;
+    display: flex;
+    justify-content: space-evenly;
+    &__bar {
+        background-color: #15DEA5;
+        height: 100%;
+        width: $size;
+        animation: Bars $anim-dur backwards infinite ease-in-out alternate;
+
+        @for $i from 1 through $num-bars {
+            &--#{$i} {
+                animation-delay: $anim-delay * $i;
+            }
+            &--#{$i}-inv {
+                animation-delay: $anim-delay * $i + random(100)*15ms;
+                animation-direction: alternate-reverse;
+                background-color: $cd-bars-inv;
+
+                &:hover {
+                    animation-play-state: paused;
+                }
+            }
+        }
+    }
+}

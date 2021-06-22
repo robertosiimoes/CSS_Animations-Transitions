@@ -1,0 +1,172 @@
+<!DOCTYPE hmtl>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	<title>Créez des animations CSS Modernes</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/mixins.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+      <div class="o-container">
+            <div class="o-card__grid">
+              <div class="o-card__shape">
+                  <span class="o-title">Email</span>
+                  <form action="post" class="o-form">
+                      <div class="o-form__group">
+                          <label class="o-group__label" for="">Email</label>
+                          <input class="o-group__email" type="email" name="email" id="o-group__email" required>
+                      </div>
+                  </form>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Déplacement horizontal</span>
+                  <div class="o-square"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Scale</span>
+                  <div class="o-square--scale"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Scale H</span>
+                  <div class="o-square--scaleH"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Scale V</span>
+                  <div class="o-square--scaleV"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Translating</span>
+                  <div class="o-square--translating"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Translating X</span>
+                  <div class="o-square--translatingX"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Translating Y</span>
+                  <div class="o-square--translatingY"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Shape with text</span>
+                  <div class="o-square--withText">
+                      <span class="o-text">Text</span>
+                  </div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Rotations</span>
+                  <div class="o-shape__box">
+                      <div class="o-square--rotate_D"></div>
+                      <div class="o-square--rotate_T"></div>
+                  </div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Translating to Scale</span>
+                  <div class="o-square--TS"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Scaling to Translating</span>
+                  <div class="o-square--ST"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Skew</span>
+                  <div class="o-square--skew"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Skew X</span>
+                  <div class="o-square--skewX"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Skew Y</span>
+                  <div class="o-square--skewY"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective et Rotate X</span>
+                  <div class="o-square--PRX"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective et Rotate Y</span>
+                  <div class="o-square--PRY"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective et Rotate Z</span>
+                  <div class="o-square--PRZ"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective et Rotate 3D</span>
+                  <div class="o-square--PR3D"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective et Translate Z</span>
+                  <div class="o-square--PRTZ"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective et Translate 3D</span>
+                  <div class="o-square--PRT3D"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective, Scale Z et Translate Z</span>
+                  <div class="o-square--PRSZTZ"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Perspective, Scale 3D et Translate Z</span>
+                  <div class="o-square--PRS3DTZ"></div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Bouton Background Opacity</span>
+                  <div class="o-btn">
+                      <span class="o-btn__text">Survole-moi !</span>
+                  </div>
+              </div>
+              <div class="o-card__shape">
+                  <span class="o-title">Barre de chargement</span>
+                  <div class="o-btn o-btn--under">
+                      <span class="o-btn__text">Reste Cliqué !</span>
+                  </div>
+                  <div class="o-progress">
+                      <div class="o-progress__bar"></div>
+                  </div>
+              </div>
+          </div>
+            <div class="o-coding__container">
+              <span class="o-title">Barre de chargement "at loading" & Apparition chat</span>
+              <div class="o-anim__container">
+                  <div class="o-progress"><div class="o-progress__loading"></div></div>
+                  <div class="o-coding__image"></div>
+              </div>
+            </div>
+
+            <div class="o-loader">
+                <p class="o-loader__text">Survolez les barres bleues pour les synchroniser</p>
+                <div class="o-loader__container">
+                    <div class="load">
+                        <div class="load__bar load__bar--1"></div>
+                        <div class="load__bar load__bar--2"></div>
+                        <div class="load__bar load__bar--3"></div>
+                        <div class="load__bar load__bar--4"></div>
+                        <div class="load__bar load__bar--5"></div>
+                    </div>
+                </div>
+                <div class="o-loader__container">
+                    <div class="load">
+                        <div class="load__bar load__bar--1-inv"></div>
+                        <div class="load__bar load__bar--2-inv"></div>
+                        <div class="load__bar load__bar--3-inv"></div>
+                        <div class="load__bar load__bar--4-inv"></div>
+                        <div class="load__bar load__bar--5-inv"></div>
+                    </div>
+                </div>
+                <p class="o-loader__text">avec leurs équivalents verts au dessus.</p>
+            </div>
+
+            <!-- <div class="spin"></div> -->
+        </div>
+  </body>
+</html>

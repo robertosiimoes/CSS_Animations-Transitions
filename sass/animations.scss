@@ -1,0 +1,72 @@
+// Animation Barre de progression
+@keyframes Progress_Bar {
+    0% {
+        transform: scaleX(0);
+        opacity: 0.2;
+    }
+    17% {
+        transform: scaleX(.18);
+    }
+    24% {
+        transform: scaleX(.40);
+        animation-timing-function: cubic-bezier(.9,0,.1,1);
+    }
+    46% {
+        transform: scaleX(.81);
+        animation-timing-function: cubic-bezier(.25,0.25,1);
+    }
+    85%, 100% {
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+
+// Animation Image
+@keyframes Coding_Image{
+    0% {
+        // transform: translateX(-9999px);
+        opacity: 0;
+    }
+    100% {
+        // transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+// Animation Shake Input
+$shake-intensity: 1%;
+@keyframes Headshake {
+    25% {
+        transform: translateX($shake-intensity);
+    }
+    75% {
+        transform: translateX($shake-intensity * -1);
+    }
+}
+
+
+// Animation Bars
+@keyframes Bars {
+    100% {
+        transform: scaleY(1.0);
+    }
+    0% {
+        transform: scaleY(0.5);
+        
+    }
+}
+
+
+// Animation Spinner
+@keyframes Spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

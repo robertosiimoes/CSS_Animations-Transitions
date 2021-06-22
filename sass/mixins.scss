@@ -1,0 +1,108 @@
+/* Test sur les mixins pour comprendre le fonctionnement */
+
+
+// Création d'une variable pour stocker la couleur primaire
+$color-primary: #15DEA5;
+
+
+// Mixin avec paramètre, version améliorée et avec des conditions sur la couleur et anticipation du fond
+// On teste la valeur de la luminosité de notre couleur, pour déterminer si on l'éclaircie ou l'assombrie
+@mixin Heading-shadow($offset-x, $offset-y, $blur-radius, $color: Lightness-shift($color-primary)) {
+    color: $color;
+    text-shadow: $offset-x $offset-y $blur-radius $color;
+}
+
+
+// Exercice mixin OC
+// On passe en paramètre la couleur à modifier et la propriété à affecter (ici background-color, color, ...)
+@mixin Hover($color, $property) {
+    @if( hue($color) < 180deg ) {
+      $color: adjust-hue($color, 30deg);
+      #{$property}: $color;
+    } @else {
+      $color: adjust-hue($color, -60deg);
+      #{$property}: $color;
+    }
+}
+
+
+// Explication création de fonction OC
+// Cette fonction pourra être incluse directement dans la mixin Header-shadow
+@function Lightness-shift($colour){
+    @if ( lightness($colour) < 25% ) {
+        @return lighten($colour, 10%);
+    } @else {
+        @return darken($colour, 10%);
+    }
+}
+
+
+// Exemple de fonction prennant une couleur en paramètre et retournant la version pastel de cette couleur
+@function pastel($clr) {
+    $hue: hue($clr);
+    $sat: 100%;
+    $light: 90%;
+    $pastel: hsl($hue, $sat, $light);
+  
+    @return $pastel;
+}
+
+
+/* FORMATION LISTE ET MAP */
+$colour-primary: #1777a7;
+$colour-invalid: red;
+$colour-white: #fff;
+
+
+// Création d'une map
+$colors-inputs: (
+    active: (
+        bg: $colour-primary,
+        brd: $colour-primary,
+        txt: $colour-white,
+        ),
+    focus: (
+        bg: $colour-primary, 
+        brd: $colour-primary, 
+        txt: $colour-white,
+    ),
+    invalid: (
+        bg: $colour-invalid, 
+        brd: $colour-white,
+        txt: $colour-white,
+    )
+);
+
+
+// Cette mixin va crée les règles CSS de couleurs adéquates pour chaque pseudo états de nos inputs
+@mixin TXTInputPalette ($colors-inputs) {
+    @each $key-state, $values in $colors-inputs{
+        &:#{$key-state} {
+            border: .1rem solid map-get($values, brd);
+            background-color: map-get($values, bg);
+            color: map-get($values, txt);
+        }
+    }
+}
+
+
+// On crée une map contenant les différents breakpoints
+$breakpoints: (mobile:599px);
+
+
+// On crée une mixin mobile-only qui contient une média querie, qui va récupérer et remplacer la valeur du breakpoints
+// Nécessaire, et le @content permet de venir inclure les règles que l'on veut
+// Lors de l'appel via @include de notre mixin
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)){
+        @content;
+    }
+}
+
+.proj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include mobile-only{
+        grid-template-columns: 1fr;
+    }
+}
