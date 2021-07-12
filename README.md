@@ -1,2 +1,2 @@
-# CSS_transitions
-Repository for testing CSS transitions
+# CSS Transitions & Animations
+Repository for testing CSS transitions and animations
